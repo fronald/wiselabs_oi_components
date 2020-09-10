@@ -1,0 +1,15 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- jdk/make/launcher/LauncherCommon.gmk.orig	2017-08-01 09:03:05.000000000 +0000
++++ jdk/make/launcher/LauncherCommon.gmk
+@@ -184,7 +184,7 @@
+           -DPROGNAME='"$1"' \
+           $$($1_CFLAGS), \
+       CFLAGS_linux := -fPIC, \
+-      CFLAGS_solaris := -KPIC -DHAVE_GETHRTIME, \
++      CFLAGS_solaris := -fPIC -DHAVE_GETHRTIME, \
+       CFLAGS_windows := $$($1_CFLAGS_windows), \
+       LDFLAGS := $$(LDFLAGS_JDKEXE) \
+           $$(ORIGIN_ARG) \
