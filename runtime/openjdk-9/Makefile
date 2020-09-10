@@ -87,9 +87,9 @@ MY_INSTALLED= $(BUILD_DIR_64)/.my_installed
 $(MY_INSTALLED): $(BUILD_DIR_64)/.built
 	[ -d $(PROTO_DIR)/usr/jdk/instances/openjdk9 ] || $(MKDIR) $(PROTO_DIR)/usr/jdk/instances/openjdk9
 	chmod -R u+rw $(PROTO_DIR)/usr/jdk/instances/openjdk9
-	cp -a $(@D)/build/solaris-*/images/j2sdk-image/* $(PROTO_DIR)/usr/jdk/instances/openjdk9
-	/usr/bin/elfedit -e 'dyn:value -s  RPATH "$$ORIGIN:$$ORIGIN/../../jre/lib/$(MACH64)"' $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/$(MACH64)/libjawt.so
-	/usr/bin/elfedit -e 'dyn:value -s  RUNPATH "$$ORIGIN:$$ORIGIN/../../jre/lib/$(MACH64)"' $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/$(MACH64)/libjawt.so
+	cp -a $(@D)/build/solaris-*/images/jdk/* $(PROTO_DIR)/usr/jdk/instances/openjdk9
+	/usr/bin/elfedit -e 'dyn:value -s  RPATH "$$ORIGIN:$$ORIGIN/../../jre/lib/$(MACH64)"' $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/libjawt.so
+	/usr/bin/elfedit -e 'dyn:value -s  RUNPATH "$$ORIGIN:$$ORIGIN/../../jre/lib/$(MACH64)"' $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/libjawt.so
 	$(TOUCH) $@
 
 $(CACERTS_INSTALLED):
@@ -121,6 +121,7 @@ REQUIRED_PACKAGES += runtime/java/openjdk8
 REQUIRED_PACKAGES += system/library
 REQUIRED_PACKAGES += system/library/freetype-2
 REQUIRED_PACKAGES += system/library/c++/sunpro
+REQUIRED_PACKAGES += system/header/header-audio
 REQUIRED_PACKAGES += print/cups
 REQUIRED_PACKAGES += $(GXX_RUNTIME_PKG)
 REQUIRED_PACKAGES += system/library/math
