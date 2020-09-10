@@ -39,12 +39,13 @@ include $(WS_MAKE_RULES)/configure.mk
 
 PATCH_LEVEL=0
 
+#GCC_VERSION=9
 CC=gcc
 CXX=g++
 PATH=$(GCC_ROOT)/bin:$(PATH.gnu)
 
 COMPONENT_PRE_CONFIGURE_ACTION =        ($(CP) -r $(SOURCE_DIR)/* $(@D)) && $(SHELL) $(BUILD_DIR_$(BITS))/common/autoconf/autogen.sh
-CONFIGURE_SCRIPT=	$(BUILD_DIR_$(BITS))/common/autoconf/configure
+CONFIGURE_SCRIPT=	$(BUILD_DIR_$(BITS))/configure
 
 CONFIGURE_OPTIONS+=        --with-boot-jdk=$(JAVA_HOME)
 CONFIGURE_OPTIONS+=        --disable-option-checking # for --with-libiconv-prefix
@@ -119,6 +120,7 @@ REQUIRED_PACKAGES += image/library/libjpeg6
 REQUIRED_PACKAGES += runtime/java/openjdk8
 REQUIRED_PACKAGES += system/library
 REQUIRED_PACKAGES += system/library/freetype-2
+REQUIRED_PACKAGES += system/library/c++/sunpro
 REQUIRED_PACKAGES += print/cups
 REQUIRED_PACKAGES += $(GXX_RUNTIME_PKG)
 REQUIRED_PACKAGES += system/library/math
