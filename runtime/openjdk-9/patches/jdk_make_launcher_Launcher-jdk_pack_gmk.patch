@@ -1,0 +1,14 @@
+$NetBSD$
+
+--- jdk/make/launcher/Launcher-jdk.pack.gmk.orig	2020-09-10 14:02:21.000000000 +0000
++++ jdk/make/launcher/Launcher-jdk.pack.gmk
+@@ -80,7 +80,7 @@
+     CFLAGS := $(UNPACKEXE_CFLAGS) $(CXXFLAGS_JDKEXE) -DFULL, \
+     CFLAGS_release := -DPRODUCT, \
+     CFLAGS_linux := -fPIC, \
+-    CFLAGS_solaris := -KPIC, \
++    CFLAGS_solaris := -fPIC, \
+     CFLAGS_macosx := -fPIC, \
+     DISABLED_WARNINGS_gcc := unused-result, \
+     MAPFILE := $(UNPACK_MAPFILE),\
+

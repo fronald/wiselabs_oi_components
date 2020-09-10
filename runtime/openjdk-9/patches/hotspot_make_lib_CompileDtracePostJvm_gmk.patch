@@ -1,0 +1,24 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- hotspot/make/lib/CompileDtracePostJvm.gmk.orig	2017-08-01 09:03:05.000000000 +0000
++++ hotspot/make/lib/CompileDtracePostJvm.gmk
+@@ -183,7 +183,7 @@
+         OUTPUT_DIR := $(JVM_LIB_OUTPUTDIR), \
+         SRC := $(HOTSPOT_TOPDIR)/src/os/solaris/dtrace, \
+         INCLUDE_FILES := jvm_dtrace.c, \
+-        CFLAGS := -m64 -G -mt -KPIC, \
++        CFLAGS := -m64 -G -fPIC, \
+         LDFLAGS := -m64 -mt -xnolib $(SHARED_LIBRARY_FLAGS), \
+         LIBS := $(LIBDL) -lc -lthread -ldoor, \
+         MAPFILE := $(HOTSPOT_TOPDIR)/make/mapfiles/libjvm_dtrace/mapfile-vers, \
+@@ -200,7 +200,7 @@
+         SRC := $(HOTSPOT_TOPDIR)/src/os/solaris/dtrace, \
+         INCLUDE_FILES := libjvm_db.c, \
+         CFLAGS := -I$(JVM_VARIANT_OUTPUTDIR)/gensrc -I$(DTRACE_SUPPORT_DIR) \
+-            -m64 -G -mt -KPIC, \
++            -m64 -G -fPIC, \
+         LDFLAGS := -m64 -mt -xnolib $(SHARED_LIBRARY_FLAGS), \
+         LIBS := -lc, \
+         MAPFILE := $(HOTSPOT_TOPDIR)/make/mapfiles/libjvm_db/mapfile-vers, \

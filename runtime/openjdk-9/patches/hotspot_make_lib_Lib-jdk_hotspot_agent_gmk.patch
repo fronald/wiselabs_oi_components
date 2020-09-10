@@ -1,0 +1,15 @@
+$NetBSD$
+
+Support SunOS/gcc.
+
+--- hotspot/make/lib/Lib-jdk.hotspot.agent.gmk.orig	2020-10-10 15:23:02.000000000 +0000
++++ hotspot/make/lib/Lib-jdk.hotspot.agent.gmk
+@@ -64,7 +64,7 @@
+   SA_CFLAGS := $(CFLAGS_JDKLIB)
+   SA_CXXFLAGS := $(CXXFLAGS_JDKLIB)
+   SA_LDFLAGS := $(subst -Wl$(COMMA)-z$(COMMA)defs,, $(LDFLAGS_JDKLIB)) \
+-      -mt $(LDFLAGS_CXX_JDK)
++      $(LDFLAGS_CXX_JDK)
+   SA_LIBS := -ldl -ldemangle -lthread -lc
+ 
+ else ifeq ($(OPENJDK_TARGET_OS), macosx)
