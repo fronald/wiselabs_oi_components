@@ -39,7 +39,6 @@ include $(WS_MAKE_RULES)/configure.mk
 
 PATCH_LEVEL=0
 
-#GCC_VERSION=9
 CC=gcc
 CXX=g++
 PATH=$(GCC_ROOT)/bin:$(PATH.gnu)
@@ -88,7 +87,6 @@ $(MY_INSTALLED): $(BUILD_DIR_64)/.built
 	[ -d $(PROTO_DIR)/usr/jdk/instances/openjdk9 ] || $(MKDIR) $(PROTO_DIR)/usr/jdk/instances/openjdk9
 	chmod -R u+rw $(PROTO_DIR)/usr/jdk/instances/openjdk9
 	cp -a $(@D)/build/solaris-*/images/jdk/* $(PROTO_DIR)/usr/jdk/instances/openjdk9
-	ln -s $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/server/libjvm.so $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib
 	$(TOUCH) $@
 
 $(CACERTS_INSTALLED):

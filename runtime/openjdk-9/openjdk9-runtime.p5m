@@ -33,8 +33,7 @@ license openjdk.license license="GPLv2 with Classpath Exception"
 file cacerts.out path=usr/jdk/instances/openjdk9/lib/security/cacerts
 
 dir path=usr/jdk/instances/openjdk9
-link path=usr/jdk/openjdk9 target=instances/openjdk9 
-link path=usr/jdk/latest target=openjdk9 pkg.linted.userland.action002.0=true
+link path=usr/jdk/openjdk9 target=instances/openjdk9
 
 link path=usr/bin/java target=../jdk/instances/openjdk9/bin/java mediator=java mediator-version=9 
 link path=usr/bin/jjs target=../jdk/instances/openjdk9/bin/jjs mediator=java mediator-version=9 
@@ -45,7 +44,6 @@ link path=usr/bin/rmid target=../jdk/instances/openjdk9/bin/rmid mediator=java m
 link path=usr/bin/rmiregistry target=../jdk/instances/openjdk9/bin/rmiregistry mediator=java mediator-version=9
 link path=usr/bin/servertool target=../jdk/instances/openjdk9/bin/servertool mediator=java mediator-version=9
 link path=usr/bin/tnameserv target=../jdk/instances/openjdk9/bin/tnameserv mediator=java mediator-version=9
-link path=usr/java target=jdk/openjdk9
 
 
 file path=usr/jdk/instances/openjdk9/bin/java mode=0555
