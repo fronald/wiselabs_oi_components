@@ -1,0 +1,130 @@
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source.  A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+#
+
+#
+# Copyright 2016 Alexander Pyhalov
+# Copyright 2020 Franklin Ronald
+#
+
+set name=pkg.fmri value=pkg:/library/java/openjdk9/demo@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary value="OpenJDK 9 Demo Programs"
+set name=info.classification value="org.opensolaris.category.2008:Development/Java"
+set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+
+license openjdk.license license="GPLv2 with Classpath Exception"
+
+<transform file path=.* -> default pkg.depend.runpath $PKGDEPEND_RUNPATH:usr/jdk/instances/openjdk9/lib:usr/jdk/instances/openjdk9/lib/server:$ORIGIN:$ORIGIN/.. >
+
+# Generated section:
+file path=usr/jdk/instances/openjdk9/demo/README
+file path=usr/jdk/instances/openjdk9/demo/jfc/CodePointIM/CodePointIM.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/CodePointIM/README.html
+file path=usr/jdk/instances/openjdk9/demo/jfc/CodePointIM/README_ja.html
+file path=usr/jdk/instances/openjdk9/demo/jfc/CodePointIM/README_zh_CN.html
+file path=usr/jdk/instances/openjdk9/demo/jfc/CodePointIM/src.zip
+file path=usr/jdk/instances/openjdk9/demo/jfc/FileChooserDemo/FileChooserDemo.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/FileChooserDemo/README.txt
+file path=usr/jdk/instances/openjdk9/demo/jfc/FileChooserDemo/src.zip
+file path=usr/jdk/instances/openjdk9/demo/jfc/Font2DTest/Font2DTest.html
+file path=usr/jdk/instances/openjdk9/demo/jfc/Font2DTest/Font2DTest.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/Font2DTest/README.txt
+file path=usr/jdk/instances/openjdk9/demo/jfc/Font2DTest/src.zip
+file path=usr/jdk/instances/openjdk9/demo/jfc/Metalworks/Metalworks.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/Metalworks/README.txt
+file path=usr/jdk/instances/openjdk9/demo/jfc/Metalworks/src.zip
+file path=usr/jdk/instances/openjdk9/demo/jfc/Notepad/Notepad.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/Notepad/README.txt
+file path=usr/jdk/instances/openjdk9/demo/jfc/Notepad/src.zip
+file path=usr/jdk/instances/openjdk9/demo/jfc/SampleTree/README.txt
+file path=usr/jdk/instances/openjdk9/demo/jfc/SampleTree/SampleTree.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/SampleTree/src.zip
+file path=usr/jdk/instances/openjdk9/demo/jfc/TableExample/README.txt
+file path=usr/jdk/instances/openjdk9/demo/jfc/TableExample/TableExample.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/TableExample/src.zip
+file path=usr/jdk/instances/openjdk9/demo/jfc/TransparentRuler/README.txt
+file path=usr/jdk/instances/openjdk9/demo/jfc/TransparentRuler/TransparentRuler.jar
+file path=usr/jdk/instances/openjdk9/demo/jfc/TransparentRuler/src.zip
+file path=usr/jdk/instances/openjdk9/demo/nbproject/README.txt
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/FileChooserDemo/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/FileChooserDemo/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/FileChooserDemo/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/FileChooserDemo/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/FileChooserDemo/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/FileChooserDemo/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Font2DTest/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Font2DTest/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Font2DTest/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Font2DTest/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Font2DTest/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Font2DTest/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Metalworks/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Metalworks/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Metalworks/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Metalworks/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Metalworks/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Metalworks/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Notepad/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Notepad/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Notepad/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Notepad/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Notepad/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/Notepad/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/SampleTree/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/SampleTree/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/SampleTree/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/SampleTree/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/SampleTree/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/SampleTree/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TableExample/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TableExample/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TableExample/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TableExample/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TableExample/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TableExample/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TransparentRuler/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TransparentRuler/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TransparentRuler/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TransparentRuler/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TransparentRuler/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/jfc/TransparentRuler/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/FullThreadDump/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/FullThreadDump/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/FullThreadDump/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/FullThreadDump/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/FullThreadDump/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/FullThreadDump/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/JTop/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/JTop/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/JTop/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/JTop/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/JTop/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/JTop/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/MemoryMonitor/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/MemoryMonitor/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/MemoryMonitor/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/MemoryMonitor/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/MemoryMonitor/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/MemoryMonitor/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/VerboseGC/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/VerboseGC/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/VerboseGC/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/VerboseGC/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/VerboseGC/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/management/VerboseGC/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/project.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/scripting/jconsole-plugin/build.properties
+file path=usr/jdk/instances/openjdk9/demo/nbproject/scripting/jconsole-plugin/build.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/scripting/jconsole-plugin/nbproject/file-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/scripting/jconsole-plugin/nbproject/jdk.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/scripting/jconsole-plugin/nbproject/netbeans-targets.xml
+file path=usr/jdk/instances/openjdk9/demo/nbproject/scripting/jconsole-plugin/nbproject/project.xml

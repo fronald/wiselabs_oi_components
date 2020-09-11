@@ -88,8 +88,7 @@ $(MY_INSTALLED): $(BUILD_DIR_64)/.built
 	[ -d $(PROTO_DIR)/usr/jdk/instances/openjdk9 ] || $(MKDIR) $(PROTO_DIR)/usr/jdk/instances/openjdk9
 	chmod -R u+rw $(PROTO_DIR)/usr/jdk/instances/openjdk9
 	cp -a $(@D)/build/solaris-*/images/jdk/* $(PROTO_DIR)/usr/jdk/instances/openjdk9
-	/usr/bin/elfedit -e 'dyn:value -s  RPATH "$$ORIGIN:$$ORIGIN/../../jre/lib/$(MACH64)"' $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/libjawt.so
-	/usr/bin/elfedit -e 'dyn:value -s  RUNPATH "$$ORIGIN:$$ORIGIN/../../jre/lib/$(MACH64)"' $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/libjawt.so
+	ln -s $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib/server/libjvm.so $(PROTO_DIR)/usr/jdk/instances/openjdk9/lib
 	$(TOUCH) $@
 
 $(CACERTS_INSTALLED):

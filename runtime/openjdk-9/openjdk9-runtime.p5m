@@ -1,0 +1,592 @@
+#
+# This file and its contents are supplied under the terms of the
+# Common Development and Distribution License ("CDDL"), version 1.0.
+# You may only use this file in accordance with the terms of version
+# 1.0 of the CDDL.
+#
+# A full copy of the text of the CDDL should have accompanied this
+# source.  A copy of the CDDL is also available via the Internet at
+# http://www.illumos.org/license/CDDL.
+#
+
+#
+# Copyright 2016 Alexander Pyhalov
+# Copyright 2020 Franklin Ronald
+#
+
+set name=pkg.fmri value=pkg:/runtime/java/openjdk9@$(IPS_COMPONENT_VERSION),$(BUILD_VERSION)
+set name=pkg.summary value="OpenJDK 9 Runtime Environment"
+set name=info.classification value="org.opensolaris.category.2008:Development/Java"
+set name=info.source-url value=$(COMPONENT_ARCHIVE_URL)
+set name=info.upstream-url value=$(COMPONENT_PROJECT_URL)
+set name=org.opensolaris.consolidation value=$(CONSOLIDATION)
+
+license openjdk.license license="GPLv2 with Classpath Exception"
+
+# $ORIGIN is in RUNPATH is not a problem
+<transform path=usr/jdk/instances/openjdk9/.* -> default pkg.linted.userland.action001.3 true>
+# All libs are 64bit, but "lib" directory is not suffixed with arch.
+<transform path=usr/jdk/instances/openjdk9/.* -> default pkg.linted.userland.action001.2 true>
+<transform path=usr/jdk/instances/openjdk9/.* -> default pkg.linted.userland.action001.5 true>
+<transform file path=.* -> default pkg.depend.runpath $PKGDEPEND_RUNPATH:usr/jdk/instances/openjdk9/lib:usr/jdk/instances/openjdk9/lib/server:$ORIGIN:$ORIGIN/.. >
+
+file cacerts.out path=usr/jdk/instances/openjdk9/lib/security/cacerts
+
+dir path=usr/jdk/instances/openjdk9
+link path=usr/jdk/openjdk9 target=instances/openjdk9 
+link path=usr/jdk/latest target=openjdk9 pkg.linted.userland.action002.0=true
+
+link path=usr/bin/java target=../jdk/instances/openjdk9/bin/java mediator=java mediator-version=9 
+link path=usr/bin/jjs target=../jdk/instances/openjdk9/bin/jjs mediator=java mediator-version=9 
+link path=usr/bin/keytool target=../jdk/instances/openjdk9/bin/keytool mediator=java mediator-version=9
+link path=usr/bin/orbd target=../jdk/instances/openjdk9/bin/orbd mediator=java mediator-version=9
+link path=usr/bin/policytool target=../jdk/instances/openjdk9/bin/policytool mediator=java mediator-version=9
+link path=usr/bin/rmid target=../jdk/instances/openjdk9/bin/rmid mediator=java mediator-version=9
+link path=usr/bin/rmiregistry target=../jdk/instances/openjdk9/bin/rmiregistry mediator=java mediator-version=9
+link path=usr/bin/servertool target=../jdk/instances/openjdk9/bin/servertool mediator=java mediator-version=9
+link path=usr/bin/tnameserv target=../jdk/instances/openjdk9/bin/tnameserv mediator=java mediator-version=9
+link path=usr/java target=jdk/openjdk9
+
+
+file path=usr/jdk/instances/openjdk9/bin/java mode=0555
+file path=usr/jdk/instances/openjdk9/bin/jjs mode=0555
+file path=usr/jdk/instances/openjdk9/bin/keytool mode=0555
+file path=usr/jdk/instances/openjdk9/bin/orbd mode=0555
+file path=usr/jdk/instances/openjdk9/bin/pack200 mode=0555
+file path=usr/jdk/instances/openjdk9/bin/unpack200 mode=0555
+file path=usr/jdk/instances/openjdk9/bin/policytool mode=0555
+file path=usr/jdk/instances/openjdk9/bin/rmid mode=0555
+file path=usr/jdk/instances/openjdk9/bin/rmiregistry mode=0555
+file path=usr/jdk/instances/openjdk9/bin/servertool mode=0555
+file path=usr/jdk/instances/openjdk9/bin/tnameserv mode=0555
+file path=usr/jdk/instances/openjdk9/man/ja/man1/java.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/jjs.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/keytool.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/orbd.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/pack200.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/policytool.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/rmid.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/rmiregistry.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/servertool.1
+file path=usr/jdk/instances/openjdk9/man/ja/man1/tnameserv.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/java.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/jjs.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/keytool.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/orbd.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/pack200.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/unpack200.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/policytool.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/rmid.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/rmiregistry.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/servertool.1
+file path=usr/jdk/instances/openjdk9/man/ja_JP.UTF-8/man1/tnameserv.1
+file path=usr/jdk/instances/openjdk9/man/man1/java.1
+file path=usr/jdk/instances/openjdk9/man/man1/jjs.1
+file path=usr/jdk/instances/openjdk9/man/man1/keytool.1
+file path=usr/jdk/instances/openjdk9/man/man1/orbd.1
+file path=usr/jdk/instances/openjdk9/man/man1/pack200.1
+file path=usr/jdk/instances/openjdk9/man/man1/policytool.1
+file path=usr/jdk/instances/openjdk9/man/man1/rmid.1
+file path=usr/jdk/instances/openjdk9/man/man1/rmiregistry.1
+file path=usr/jdk/instances/openjdk9/man/man1/servertool.1
+file path=usr/jdk/instances/openjdk9/man/man1/tnameserv.1
+file path=usr/jdk/instances/openjdk9/man/man1/unpack200.1
+file path=usr/jdk/instances/openjdk9/conf/logging.properties
+file path=usr/jdk/instances/openjdk9/conf/management/jmxremote.access
+file path=usr/jdk/instances/openjdk9/conf/management/jmxremote.password.template
+file path=usr/jdk/instances/openjdk9/conf/management/management.properties
+file path=usr/jdk/instances/openjdk9/conf/net.properties
+file path=usr/jdk/instances/openjdk9/conf/sdp/sdp.conf.template
+file path=usr/jdk/instances/openjdk9/conf/security/java.policy
+file path=usr/jdk/instances/openjdk9/conf/security/java.security
+file path=usr/jdk/instances/openjdk9/conf/security/policy/README.txt
+file path=usr/jdk/instances/openjdk9/conf/security/policy/limited/default_US_export.policy
+file path=usr/jdk/instances/openjdk9/conf/security/policy/limited/default_local.policy
+file path=usr/jdk/instances/openjdk9/conf/security/policy/limited/exempt_local.policy
+file path=usr/jdk/instances/openjdk9/conf/security/policy/unlimited/default_US_export.policy
+file path=usr/jdk/instances/openjdk9/conf/security/policy/unlimited/default_local.policy
+file path=usr/jdk/instances/openjdk9/conf/security/sunpkcs11-solaris.cfg
+file path=usr/jdk/instances/openjdk9/conf/security/ucrypto-solaris.cfg
+file path=usr/jdk/instances/openjdk9/conf/sound.properties
+file path=usr/jdk/instances/openjdk9/release
+file path=usr/jdk/instances/openjdk9/jmods/java.activation.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.base.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.compiler.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.corba.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.datatransfer.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.desktop.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.instrument.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.logging.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.management.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.management.rmi.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.naming.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.prefs.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.rmi.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.scripting.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.se.ee.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.se.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.security.jgss.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.security.sasl.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.smartcardio.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.sql.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.sql.rowset.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.transaction.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.xml.bind.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.xml.crypto.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.xml.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.xml.ws.annotation.jmod
+file path=usr/jdk/instances/openjdk9/jmods/java.xml.ws.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.accessibility.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.attach.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.charsets.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.compiler.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.crypto.cryptoki.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.crypto.ec.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.crypto.ucrypto.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.dynalink.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.editpad.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.hotspot.agent.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.httpserver.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.incubator.httpclient.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.internal.ed.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.internal.jvmstat.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.internal.le.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.internal.opt.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.internal.vm.ci.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jartool.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.javadoc.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jcmd.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jconsole.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jdeps.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jdi.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jdwp.agent.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jlink.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jshell.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jsobject.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.jstatd.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.localedata.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.management.agent.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.management.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.naming.dns.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.naming.rmi.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.net.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.pack.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.policytool.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.rmic.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.scripting.nashorn.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.scripting.nashorn.shell.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.sctp.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.security.auth.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.security.jgss.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.unsupported.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.xml.bind.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.xml.dom.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.xml.ws.jmod
+file path=usr/jdk/instances/openjdk9/jmods/jdk.zipfs.jmod
+link path=usr/jdk/instances/openjdk9/legal/java.activation/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.activation/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/java.base/ASSEMBLY_EXCEPTION
+file path=usr/jdk/instances/openjdk9/legal/java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/java.base/aes.md
+file path=usr/jdk/instances/openjdk9/legal/java.base/asm.md
+file path=usr/jdk/instances/openjdk9/legal/java.base/cldr.md
+file path=usr/jdk/instances/openjdk9/legal/java.base/icu.md
+file path=usr/jdk/instances/openjdk9/legal/java.base/zlib.md
+link path=usr/jdk/instances/openjdk9/legal/java.compiler/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.compiler/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.corba/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.corba/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/java.datatransfer/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.datatransfer/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.desktop/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.desktop/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/colorimaging.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/fontconfig.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/giflib.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/harfbuzz.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/jpeg.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/lcms.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/libpng.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/mesa3d.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/opengl.md
+file path=usr/jdk/instances/openjdk9/legal/java.desktop/xwindows.md
+link path=usr/jdk/instances/openjdk9/legal/java.instrument/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.instrument/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.logging/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.logging/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/java.management.rmi/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.management.rmi/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.management/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.management/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.naming/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.naming/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.prefs/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.prefs/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.rmi/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.rmi/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.scripting/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.scripting/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.se.ee/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.se.ee/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.se/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.se/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/java.security.jgss/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.security.jgss/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/java.security.sasl/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.security.sasl/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.smartcardio/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.smartcardio/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/java.smartcardio/pcsclite.md
+link path=usr/jdk/instances/openjdk9/legal/java.sql.rowset/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.sql.rowset/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.sql/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.sql/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.transaction/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.transaction/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.xml.bind/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.xml.bind/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.xml.crypto/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.xml.crypto/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/java.xml.crypto/santuario.md
+link \
+    path=usr/jdk/instances/openjdk9/legal/java.xml.ws.annotation/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.xml.ws.annotation/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.xml.ws/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.xml.ws/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/java.xml/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/java.xml/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/java.xml/bcel.md
+file path=usr/jdk/instances/openjdk9/legal/java.xml/dom.md
+file path=usr/jdk/instances/openjdk9/legal/java.xml/jcup.md
+file path=usr/jdk/instances/openjdk9/legal/java.xml/xalan.md
+file path=usr/jdk/instances/openjdk9/legal/java.xml/xerces.md
+file path=usr/jdk/instances/openjdk9/legal/java.xml/xmlresolver.md
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.accessibility/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.accessibility/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.attach/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.attach/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.charsets/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.charsets/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.compiler/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.compiler/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.crypto.cryptoki/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.crypto.cryptoki/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.crypto.cryptoki/pkcs11cryptotoken.md
+file path=usr/jdk/instances/openjdk9/legal/jdk.crypto.cryptoki/pkcs11wrapper.md
+link path=usr/jdk/instances/openjdk9/legal/jdk.crypto.ec/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.crypto.ec/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.crypto.ec/ecc.md
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.crypto.ucrypto/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.crypto.ucrypto/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.dynalink/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.dynalink/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.dynalink/dynalink.md
+link path=usr/jdk/instances/openjdk9/legal/jdk.editpad/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.editpad/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.hotspot.agent/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.hotspot.agent/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.httpserver/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.httpserver/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.incubator.httpclient/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.incubator.httpclient/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.ed/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.ed/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.internal.jvmstat/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.jvmstat/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.le/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.le/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.internal.le/jline.md
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.opt/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.opt/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.internal.opt/jopt-simple.md
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.internal.vm.ci/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.internal.vm.ci/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jartool/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jartool/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.javadoc/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.javadoc/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.javadoc/jquery.md
+file path=usr/jdk/instances/openjdk9/legal/jdk.javadoc/jszip.md
+file path=usr/jdk/instances/openjdk9/legal/jdk.javadoc/pako.md
+link path=usr/jdk/instances/openjdk9/legal/jdk.jcmd/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jcmd/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jconsole/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jconsole/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jdeps/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jdeps/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jdi/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jdi/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jdwp.agent/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jdwp.agent/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jlink/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jlink/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jshell/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jshell/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jsobject/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jsobject/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.jstatd/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.jstatd/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.localedata/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.localedata/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.localedata/cldr.md \
+    target=../java.base/cldr.md
+file path=usr/jdk/instances/openjdk9/legal/jdk.localedata/thaidict.md
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.management.agent/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.management.agent/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.management/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.management/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.naming.dns/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.naming.dns/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.naming.rmi/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.naming.rmi/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.net/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.net/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.pack/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.pack/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.policytool/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.policytool/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.rmic/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.rmic/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.scripting.nashorn.shell/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.scripting.nashorn.shell/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.scripting.nashorn/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.scripting.nashorn/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.scripting.nashorn/double-conversion.md
+file path=usr/jdk/instances/openjdk9/legal/jdk.scripting.nashorn/joni.md
+link path=usr/jdk/instances/openjdk9/legal/jdk.sctp/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.sctp/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.security.auth/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.security.auth/LICENSE \
+    target=../java.base/LICENSE
+link \
+    path=usr/jdk/instances/openjdk9/legal/jdk.security.jgss/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.security.jgss/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.unsupported/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.unsupported/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.xml.bind/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.xml.bind/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/legal/jdk.xml.bind/freebxml.md
+file path=usr/jdk/instances/openjdk9/legal/jdk.xml.bind/relaxngdatatype.md
+file path=usr/jdk/instances/openjdk9/legal/jdk.xml.bind/rngom.md
+link path=usr/jdk/instances/openjdk9/legal/jdk.xml.bind/xmlresolver.md \
+    target=../java.xml/xmlresolver.md
+link path=usr/jdk/instances/openjdk9/legal/jdk.xml.dom/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.xml.dom/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.xml.ws/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.xml.ws/LICENSE \
+    target=../java.base/LICENSE
+link path=usr/jdk/instances/openjdk9/legal/jdk.zipfs/ASSEMBLY_EXCEPTION \
+    target=../java.base/ASSEMBLY_EXCEPTION
+link path=usr/jdk/instances/openjdk9/legal/jdk.zipfs/LICENSE \
+    target=../java.base/LICENSE
+file path=usr/jdk/instances/openjdk9/lib/classlist
+file path=usr/jdk/instances/openjdk9/lib/ct.sym
+file path=usr/jdk/instances/openjdk9/lib/fontconfig.bfc
+file path=usr/jdk/instances/openjdk9/lib/fontconfig.properties.src
+file path=usr/jdk/instances/openjdk9/lib/jli/libjli.so
+file path=usr/jdk/instances/openjdk9/lib/jrt-fs.jar
+file path=usr/jdk/instances/openjdk9/lib/jspawnhelper
+file path=usr/jdk/instances/openjdk9/lib/jvm.cfg
+file path=usr/jdk/instances/openjdk9/lib/libattach.so
+file path=usr/jdk/instances/openjdk9/lib/libawt.so
+file path=usr/jdk/instances/openjdk9/lib/libawt_headless.so
+file path=usr/jdk/instances/openjdk9/lib/libawt_xawt.so
+file path=usr/jdk/instances/openjdk9/lib/libdt_socket.so
+file path=usr/jdk/instances/openjdk9/lib/libextnet.so
+file path=usr/jdk/instances/openjdk9/lib/libfontmanager.so pkg.depend.bypass-generate=.*gcc_s.so.*
+file path=usr/jdk/instances/openjdk9/lib/libinstrument.so
+file path=usr/jdk/instances/openjdk9/lib/libj2gss.so
+file path=usr/jdk/instances/openjdk9/lib/libj2pcsc.so
+file path=usr/jdk/instances/openjdk9/lib/libj2pkcs11.so
+file path=usr/jdk/instances/openjdk9/lib/libjaas_unix.so
+file path=usr/jdk/instances/openjdk9/lib/libjava.so
+file path=usr/jdk/instances/openjdk9/lib/libjavajpeg.so pkg.depend.bypass-generate=.*jpeg.so.*
+file path=usr/jdk/instances/openjdk9/lib/libjawt.so
+file path=usr/jdk/instances/openjdk9/lib/libjdwp.so
+file path=usr/jdk/instances/openjdk9/lib/libjimage.so
+file path=usr/jdk/instances/openjdk9/lib/libjsig.so
+file path=usr/jdk/instances/openjdk9/lib/libjsound.so
+file path=usr/jdk/instances/openjdk9/lib/liblcms.so
+file path=usr/jdk/instances/openjdk9/lib/libmanagement.so
+file path=usr/jdk/instances/openjdk9/lib/libmanagement_agent.so
+file path=usr/jdk/instances/openjdk9/lib/libmanagement_ext.so
+file path=usr/jdk/instances/openjdk9/lib/libmlib_image.so
+file path=usr/jdk/instances/openjdk9/lib/libnet.so
+file path=usr/jdk/instances/openjdk9/lib/libnio.so
+file path=usr/jdk/instances/openjdk9/lib/libprefs.so
+file path=usr/jdk/instances/openjdk9/lib/librmi.so
+file path=usr/jdk/instances/openjdk9/lib/libsaproc.so
+file path=usr/jdk/instances/openjdk9/lib/libsctp.so
+file path=usr/jdk/instances/openjdk9/lib/libsplashscreen.so
+file path=usr/jdk/instances/openjdk9/lib/libsunec.so
+file path=usr/jdk/instances/openjdk9/lib/libunpack.so
+file path=usr/jdk/instances/openjdk9/lib/libverify.so
+file path=usr/jdk/instances/openjdk9/lib/libzip.so
+file path=usr/jdk/instances/openjdk9/lib/modules
+file path=usr/jdk/instances/openjdk9/lib/psfont.properties.ja
+file path=usr/jdk/instances/openjdk9/lib/psfontj2d.properties
+file path=usr/jdk/instances/openjdk9/lib/security/blacklisted.certs
+#file path=usr/jdk/instances/openjdk9/lib/security/cacerts
+file path=usr/jdk/instances/openjdk9/lib/security/default.policy
+file path=usr/jdk/instances/openjdk9/lib/server/Xusage.txt
+file path=usr/jdk/instances/openjdk9/lib/server/libjsig.so
+file path=usr/jdk/instances/openjdk9/lib/server/libjvm.so
+file path=usr/jdk/instances/openjdk9/lib/tzdb.dat
+
